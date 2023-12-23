@@ -1,0 +1,38 @@
+{% extends "app/base.html" %}
+{% load static %}
+
+{% block content %}
+{% comment %} <article class="content-section"> {% endcomment %}
+
+
+{% if not user.is_authenticated %}
+<div class="content-section">
+    <form method='POST'>
+        {% csrf_token %}
+        <div class="input-1 col-12 d-flex justify-content-center align-items-center">
+            <div class="mb-3">
+                <label for="basic-url" class="form-label">Login</label>
+                <div class="input-group">
+                  <input name='username' type="text" class="form-control focus-ring focus-ring-dark" id="basic-url" aria-describedby="basic-addon3 basic-addon4" maxlength="20" required>
+                </div>
+            </div>
+        </div>
+        <div class="input-2 col-12 d-flex justify-content-center align-items-center">
+            <div class="mb-3">
+                <label for="basic-url" class="form-label">Password</label>
+                <div class="input-group">
+                  <input name='password' type="password" class="form-control focus-ring focus-ring-dark" id="basic-url" aria-describedby="basic-addon3 basic-addon4" maxlength="20" required>
+                </div>
+            </div>
+        </div>
+    
+        <div class="col-12 mb-3 d-flex justify-content-center align-items-center">
+            <button type="submit" class="btn btn-light d-flex justify-content-center align-items-center">Enter</button>
+        </div>
+    </form>
+</div>
+{% endif %}
+
+     
+
+{% endblock content %}

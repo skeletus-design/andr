@@ -1,0 +1,57 @@
+{% extends "app/base.html" %}
+{% load static %}
+
+{% block content %}
+{% comment %} <article class="content-section"> {% endcomment %}
+ 
+{% for coin in coins %}  
+   {% if not user.is_authenticated %}
+   <div class="content-section">
+      <div class="d-flex justify-content-center">
+         <h1 >Авторизуйтесь</h1>
+      </div>
+   </div>
+   {% else %}
+   <div class="col-md-4">
+      <div class="content-section">
+      <h3>...</h3>
+      <h3>Актуальные цены</h3>
+      <a href= {% url "main" %}>Обновления каждые несколько минут!
+         <ul class="list-group">
+            {% comment %} <li class="list-group-item list-group-item-light"><a href='https://docs.google.com/document/d/1GEk9BZICknT7nzF1r_US2J29wvT1hceRaacN2ZdgizU/edit?usp=sharing'>Патч 1.1 </a></li>
+            <li class="list-group-item list-group-item-light"><a href='https://docs.google.com/document/d/1bb19E6TvMQmW38r-_6ozY7yI-ApLb-6RxEfxMeage5w/edit?usp=sharing'>Патч 1.2 </a></li> {% endcomment %}
+            <li class="list-group-item list-group-item-light">{{coin.title}}</li>
+            <li class="list-group-item list-group-item-light">{{coin.price}} Деняк</li>
+         </ul>
+         </a>
+      </div>
+   </div>
+
+      {% for item in items %}
+         <form class="content-section" method='POST' action={% url "buy" %}>
+            {% csrf_token %}
+            <div class="content-section">
+               <h3>Ваш кошелек</h3>
+               <ul class="list-group">
+                  {% comment %} <li class="list-group-item list-group-item-light"><a href='https://docs.google.com/document/d/1GEk9BZICknT7nzF1r_US2J29wvT1hceRaacN2ZdgizU/edit?usp=sharing'>Патч 1.1 </a></li>
+                  <li class="list-group-item list-group-item-light"><a href='https://docs.google.com/document/d/1bb19E6TvMQmW38r-_6ozY7yI-ApLb-6RxEfxMeage5w/edit?usp=sharing'>Патч 1.2 </a></li> {% endcomment %}
+                  <li class="list-group-item list-group-item-light">{{item.coins}} Зефира</li>
+                  <li class="list-group-item list-group-item-light">{{item.money}} Деняк</li>
+               </ul>
+            </div>
+         
+            <div class="content-section">
+               <button class="btn btn-secondary">Купить</button>
+            </div>
+         </form>
+         <form class="content-section" method='POST' action={% url "sell" %}>
+            {% csrf_token %}
+            <button class="btn btn-danger">Продать</button>
+         </form>
+      {% endfor %}
+
+   {% endif %}
+{% endfor %}
+     
+
+{% endblock content %}
