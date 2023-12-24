@@ -15,10 +15,10 @@ body {
   color: #333333;
   margin-top: 5rem;
   font-family:Roboto;
-  background-image:url('./bg.jpg');
+  /* background-image:url('./bg.jpg');
   background-repeat:no-repeat;
   background-size:contain;
-  background-position:center;
+  background-position:center; */
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -45,12 +45,12 @@ ul {
   font-weight: 500px;
 }
 
-html{
+/* html{
   background-image:url('./static/app/bg.jpg');
   background-repeat:no-repeat;
   background-size:contain;
   background-position:center;
-}
+} */
 
 .content-section {
   /* background: #ffffff; */

@@ -17,7 +17,7 @@ class in_in:
             self.db.commit()
             cur.execute(f"UPDATE app_coins SET price = {random}")
             self.db.commit()
-            time.sleep(10)
+            time.sleep(5)
         print('stopped')
 
 if __name__ == "__main__":
